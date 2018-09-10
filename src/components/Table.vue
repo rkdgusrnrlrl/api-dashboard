@@ -8,15 +8,19 @@
         </thead>
         <tbody>
         <tr v-for="d in data">
-            <td v-for="(rawCol, col) in columes" data-label="Name">{{d[col]}}</td>
+            <Td v-for="(rawCol, col) in columes" :columnName="rawCol" :value="d[col]"/>
         </tr>
         </tbody>
     </table>
 </template>
 
 <script>
+    import Td from './Td'
     export default {
         name: "Table",
+        components : {
+            Td
+        },
         props : {
             columes: Object,
             data : Array
