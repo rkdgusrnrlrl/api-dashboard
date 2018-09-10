@@ -27,5 +27,7 @@
 </script>
 
 <style scoped>
-
+    table td {
+        text-align: left;
+    }
 </style>
