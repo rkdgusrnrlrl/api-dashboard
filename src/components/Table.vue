@@ -3,18 +3,12 @@
         <caption>Application1</caption>
         <thead>
         <tr>
-            <th>Name</th>
-            <th>URL</th>
-            <th>Method</th>
-            <th>Status</th>
+            <th v-for="rowCol in columes">{{ rowCol }}</th>
         </tr>
         </thead>
         <tbody>
-        <tr>
-            <td data-label="Name">User</td>
-            <td data-label="URL">/users</td>
-            <td data-label="Method">POST</td>
-            <td data-label="Status">SUCCESS</td>
+        <tr v-for="d in data">
+            <td v-for="(rawCol, col) in columes" data-label="Name">{{d[col]}}</td>
         </tr>
         </tbody>
     </table>
@@ -22,7 +16,11 @@
 
 <script>
     export default {
-        name: "Table"
+        name: "Table",
+        props : {
+            columes: Object,
+            data : Array
+        }
     }
 </script>
 

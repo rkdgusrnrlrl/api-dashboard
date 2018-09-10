@@ -1,6 +1,6 @@
 <template>
   <div id="app">
-    <Table/>
+    <Table :columes="columes" :data="statusList"/>
   </div>
 </template>
 
@@ -11,6 +11,24 @@ export default {
   name: 'app',
   components: {
     Table
+  },
+  data() {
+    return {
+        columes: {
+            name : "Name",
+            url : "URL",
+            method : "Method",
+            status : "Status"
+        },
+        statusList : [
+            {
+                name : "사용자 등록",
+                url : "/user",
+                method : "POST",
+                status : "SUCCESS"
+            }
+        ]
+    }
   }
 }
 </script>
