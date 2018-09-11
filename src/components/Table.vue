@@ -1,6 +1,6 @@
 <template>
     <table>
-        <caption>Application1</caption>
+        <caption>Application1 의 API 목록</caption>
         <thead>
         <tr>
             <th v-for="rowCol in columes">{{ rowCol }}</th>
