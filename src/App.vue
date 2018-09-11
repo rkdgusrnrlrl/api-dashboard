@@ -6,7 +6,7 @@
 
 <script>
 import Table from './components/Table'
-
+import _  from 'lodash'
 
 export default {
     name: 'app',
@@ -39,7 +39,10 @@ export default {
             this.$http.get('http://127.0.0.1:8000/api/applications/1/apis/')
                 .then((data) => {
                     const statusList = data.data
-                    this.statusList = statusList
+                    const apiStatusList = _.map(statusList, (api) => {
+                        return _.assign(api, {status : api.last_status.status})
+                    })
+                    this.statusList = apiStatusList
                 })
         }
     }
