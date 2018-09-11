@@ -7,17 +7,17 @@
 <script>
 import Table from './components/Table'
 
+
 export default {
     name: 'app',
     components: {
         Table
     },
     data() {
-
         return {
             columes: {
                 name : "Name",
-                url : "URL",
+                full_url : "URL",
                 method : "Method",
                 status : "Status"
             },
@@ -29,6 +29,18 @@ export default {
                     status : "SUCCESS"
                 }
             ]
+        }
+    },
+    created() {
+        this.initData()
+    },
+    methods : {
+        initData() {
+            this.$http.get('http://127.0.0.1:8000/api/applications/1/apis/')
+                .then((data) => {
+                    const statusList = data.data
+                    this.statusList = statusList
+                })
         }
     }
 }
