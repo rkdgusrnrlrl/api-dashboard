@@ -44,14 +44,18 @@
         },
         methods : {
             initData() {
-                this.$http.get('http://127.0.0.1:8000/api/applications/1/apis/')
-                    .then((data) => {
-                        const statusList = data.data
-                        const apiStatusList = _.map(statusList, (api) => {
-                            return _.assign(api, {status : api.last_status.status})
-                        })
-                        this.statusList = apiStatusList
+                Promise.all([
+                    this.$http.get('http://127.0.0.1:8000/api/applications/1/'),
+                    this.$http.get('http://127.0.0.1:8000/api/applications/1/apis/')
+                ]).then(([applicationResp, data]) => {
+                    const application = applicationResp.data
+                    const statusList = data.data
+                    const apiStatusList = _.map(statusList, (api) => {
+                        return _.assign(api, {status : api.last_status.status})
                     })
+                    this.statusList = apiStatusList
+                    this.application = application
+                })
             }
         }
     }
