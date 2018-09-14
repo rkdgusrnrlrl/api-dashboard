@@ -1,6 +1,6 @@
 <template>
     <div id="home">
-        <Table :columes="columes" :data="statusList"/>
+        <Table :title="tableTitle" :columes="columes" :data="statusList"/>
     </div>
 </template>
 
@@ -15,6 +15,9 @@
         },
         data() {
             return {
+                application : {
+                    name : "Appilcation1"
+                },
                 columes: {
                     name : "Name",
                     full_url : "URL",
@@ -33,6 +36,11 @@
         },
         created() {
             this.initData()
+        },
+        computed : {
+            tableTitle : function () {
+                return this.application.name + " API 목록"
+            }
         },
         methods : {
             initData() {

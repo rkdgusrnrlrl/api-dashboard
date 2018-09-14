@@ -1,6 +1,6 @@
 <template>
     <table :class="tableType">
-        <caption>Application1 의 API 목록</caption>
+        <caption>{{ title }}</caption>
         <thead>
         <tr>
             <th v-for="rowCol in columes">{{ rowCol }}</th>
@@ -26,6 +26,7 @@
                 type : String,
                 default : ""
             },
+            title : String,
             columes: Object,
             data : Array
         },
