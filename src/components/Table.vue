@@ -1,5 +1,5 @@
 <template>
-    <table>
+    <table :class="tableType">
         <caption>Application1 의 API 목록</caption>
         <thead>
         <tr>
@@ -22,8 +22,22 @@
             Td
         },
         props : {
+            type : {
+                type : String,
+                default : ""
+            },
             columes: Object,
             data : Array
+        },
+        computed : {
+            tableType : function () {
+                if (this.type == "horizontal") {
+                    return {
+                        horizontal : true
+                    }
+                }
+                return {}
+            }
         }
     }
 </script>
@@ -31,5 +45,18 @@
 <style scoped>
     table td {
         text-align: left;
+    }
+    table.horizontal thead {
+        flex: .2 0 0;
+    }
+    table.horizontal tbody {
+        flex: .8 0 0;
+        margin-left: 0;
+    }
+    table.horizontal th {
+        width: auto;
+    }
+    table.horizontal td {
+        width: auto;
     }
 </style>
