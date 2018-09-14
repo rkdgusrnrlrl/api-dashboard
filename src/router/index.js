@@ -1,7 +1,15 @@
-import App from '../App'
-const About = { template: '<p>about page</p>' }
+import Vue from 'vue'
+import VueRouter from 'vue-router'
 
-export default {
-    '/': App,
-    '/about': About
-}
+import Home from './Home'
+
+Vue.use(VueRouter)
+
+const router = new VueRouter({
+    mode : 'history',
+    routes : [
+        {path : '/', component : Home}
+    ]
+})
+
+export default router

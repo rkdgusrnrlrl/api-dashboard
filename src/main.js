@@ -1,20 +1,12 @@
 import Vue from 'vue'
 import axios from 'axios'
+import App from './App'
 import router from './router'
 
 Vue.config.productionTip = false
 Vue.prototype.$http = axios
 
 new Vue({
-    data : {
-        currentRoute : window.location.pathname
-    },
-    computed : {
-        ViewComponent () {
-            return router[this.currentRoute]
-        }
-    },
-    render (h) {
-        return h(this.ViewComponent)
-    }
+    render: h => h(App),
+    router
 }).$mount('#app')
